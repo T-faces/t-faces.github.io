@@ -112,7 +112,7 @@ var list = `{
 			{
 				"label":"Animasi Confetti",
 				"ext":"html", 
-				"url":"https://t-faces.github.io/spesial-buat-kamu"
+				"url":"https://raw.githubusercontent.com/nvmbrxi/nvmbrxi.github.io/nvmbrxi/subfunc/script-downloader/script-list/6993582225908436250.html"
 			}
 		]
 	}
