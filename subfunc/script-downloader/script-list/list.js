@@ -107,12 +107,12 @@ var list = `{
 			}
 		]
 	},
-	"6993582225908436250": {
+	"543212345": {
 		"link": [
 			{
 				"label":"Animasi Confetti",
 				"ext":"html", 
-				"url":"https://raw.githubusercontent.com/nvmbrxi/nvmbrxi.github.io/nvmbrxi/subfunc/script-downloader/script-list/6993582225908436250.html"
+				"url":"https://github.com/T-faces/t-faces.github.io/blob/Master/subfunc/script-downloader/script-list/543212345.html"
 			}
 		]
 	}
