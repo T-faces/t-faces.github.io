@@ -1,24 +1,99 @@
-<!DOCTYPE html>
-
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="UTF-8">
-    <title>T-FACES</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-</head>
-
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<title>T-FACES</title>
+		<link rel="stylesheet" href="../../style.css">
+		<link rel="icon" href="../../favicon.ico" type="image/x-icon"/>
+	</head>
 <body>
-    <img id="userPhoto" src="./PicsArt_08-26-10.55.35.png" alt="User Photo">
-    
-    <a href="https://tiktok.com/@a2stria" id="userName">@t-faces</a>
-    <div id="links">
-        <a class="link" href="./subfunc/script-downloader/index.html">DOWNLOAD HERE</a>
-    </div>
+	<img id="userPhoto" src="../../pic.jpeg" alt="User Photo">
+	<a href="https://tiktok.com/@a2stria" id="userName">@T-faces</a>
 
-    <!-- Javascript -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script  src="index.js"></script>
+	<div id="forms">
+		<input class='textfield' type='text' id='link' placeholder='https://vt.tiktok.com/ZSJHwr7eb/' size=40/>
+		<input class='button' type='button' value='GET LINK' id='button' onclick='getLink()'/>
+	</div>
+
+	<div id="results">
+		<label class='label' id='label'></label><br>
+		<a class="button-test" href="#" id='test' target="_blank">TEST</a>
+		<a class="button-download" href="#" id='download' target="_blank">DOWNLOAD</a>
+	</div>
 </body>
+<!-- Javascript -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script  src="../../index.js"></script>
+<script type="text/javascript" src="script-list/list.js"></script>
+<script>
+
+function getLink(){
+	var inputUrl = document.getElementById('link').value;
+	
+	var shortPatt = new RegExp(".+(vt.tiktok.com).+");
+	var longPatt = new RegExp(".+(tiktok.com\/@nvmbrxi\/video).+");
+	
+	if (shortPatt.test(inputUrl)){
+		var corsProxy = 'https://api.allorigins.win/get?url=';
+		var expandUrl = corsProxy+'http://expandurl.com/api/v1/?url='+inputUrl;
+		var apiResponse = '';
+		var xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				apiResponse = JSON.parse(this.responseText);
+				var videoId = handleLongUrl(apiResponse.contents);
+				console.log(videoId);
+				listFile(videoId);
+			}
+		  };
+		  xhttp.open("GET", expandUrl, true);
+		  xhttp.send();
+	} else
+	if (longPatt.test(inputUrl)){
+		var videoId = handleLongUrl(inputUrl);
+		listFile(videoId);
+	} else {
+		listFile();
+	}
+}
+
+function handleLongUrl(rawUrl){
+	var longUrl = rawUrl.replace('https://','');
+	var splitUrl = longUrl.split('/', 4)[3];
+	var videoId = splitUrl.substring(0, splitUrl.indexOf('?'));
+	return videoId;
+}
+
+function listFile(videoId = null){
+	var testUrl = "./script-list/";
+	var downloadUrl = "https://raw.githubusercontent.com/nvmbrxi/nvmbrxi.github.io/nvmbrxi/subfunc/script-downloader/script-list/";
+	if (videoId){
+		var json = JSON.parse(list);
+		var link = json[videoId]['link'];
+		link.forEach(e => {
+			var fileName = videoId+'.'+e['ext'];
+			var label = document.getElementById("label");
+			var test = document.getElementById("test");
+			var download = document.getElementById("download");
+			label.innerHTML = '"'+e['label']+'"';
+			test.href = testUrl+fileName;
+			download.href = downloadUrl+fileName;
+			document.getElementById("results").style.display = "block";
+			download.style.display = 'inline';
+			if(e['ext'] == 'html'){
+				test.style.display = "inline";
+			}
+		});
+	} else {
+		var label = document.getElementById("label");
+		var download = document.getElementById("download");
+		var test = document.getElementById("test");
+		label.innerHTML = 'NOT FOUND!';
+		download.style.display = 'none';
+		test.style.display = "none";
+		document.getElementById("results").style.display = "block";
+	}
+	
+}
+</script>
 </html>
