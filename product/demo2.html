@@ -1,0 +1,918 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="robots" content="index, follow" />
+
+      <meta name="description" content="Toko Order Wedding adalah script toko online untuk jasa pembuatan undangan pernikahan website yang canggih dan mudah digunakan." />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Digital Wedding" />
+    <meta property="og:description" content="Toko Order Wedding adalah script toko online untuk jasa pembuatan undangan pernikahan website yang canggih dan mudah digunakan." />
+    <meta property="og:url" content="https://jasaundangan.com/" />
+    <meta property="og:site_name" content="Digital Wedding" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/88733179?v=4/v1/fill/w_200,h_250,al_c,q_80,usm_0.66_1.00_0.01" />
+    <meta property="og:image:secure_url" content="https://avatars.githubusercontent.com/u/88733179?v=4/v1/fill/w_200,h_250,al_c,q_80,usm_0.66_1.00_0.01" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Digital Wedding" />
+    <meta name="twitter:description" content="Toko Order Wedding adalah script toko online untuk jasa pembuatan undangan pernikahan website yang canggih dan mudah digunakan." />
+    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/88733179?v=4/v1/fill/w_200,h_250,al_c,q_80,usm_0.66_1.00_0.01" />
+  
+    <meta name="google-site-verification" content="DA0Ez57LMg4pp-Rruqbt85en25hxXGoU_kUOdfpjUmU" />
+  <!-- Facebook Pixel Code -->
+    <script>
+    ! function(f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function() {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '');
+    fbq('track', 'PageView');
+  </script>
+  <!-- End Facebook Pixel Code -->
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://jasaundangan.com/assets/css/fonts.css">
+  <link rel="stylesheet" type="text/css" href="https://jasaundangan.com/assets/css/app.css?v=1">
+  <link rel="stylesheet" type="text/css" href="https://jasaundangan.com/assets/css/app-responsive.css?v=1">
+  <link rel="stylesheet" type="text/css" href="https://jasaundangan.com/assets/css/undangan.css?v=1">
+    <link rel="stylesheet" href="https://jasaundangan.com/assets/starrr/dist/starrr.css">
+  <link rel="stylesheet" href="https://jasaundangan.com/assets/css/bootstrap-datepicker3.min.css">
+
+  <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/88733179?v=4/v1/fill/w_200,h_250,al_c,q_80,usm_0.66_1.00_0.01" type="image/x-icon" />
+
+  <script src="https://kit.fontawesome.com/2baad1d54e.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://jasaundangan.com/assets/icofont/icofont.min.css">
+
+  <link rel="stylesheet" href="https://jasaundangan.com/assets/css/animate.css" />
+
+  
+  <style>
+    .button-bottom-modal-cart-global button {
+      border: 1px solid #1CA3A6;
+      color: #1CA3A6;
+    }
+
+    .button-bottom-modal-cart-global a button {
+      background-color: #1CA3A6    }
+
+    .button-bottom-modal-cart-global a button:hover {
+      border: 1px solid #454545;
+      background-color: #454545;
+    }
+
+    .button-bottom-modal-cart-global button:hover {
+      border: 1px solid #1CA3A6;
+      color: #ffffff;
+      background-color: #1CA3A6;
+    }
+  </style>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+  <link rel="stylesheet" href="https://jasaundangan.com/assets/select2-4.0.6-rc.1/dist/css/select2.min.css">
+
+  <link rel="stylesheet" href="https://jasaundangan.com/assets/css/lightbox.css">
+
+  <title>Demo 2</title>
+
+</head>
+
+<body>
+
+  
+  <!-- model cart -->
+  <div class="modal fade" id="modalCart" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Keranjang Belanja</h5>
+          <button onclick="location.reload(true)" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modalCartBodyShow">
+                      <div class="alert alert-warning">Keranjang masih kosong, yuk belanja dulu.</div>
+            <div class="button-bottom-modal-cart-global">
+              <button type="button" class="shopping-again" data-dismiss="modal">BELANJA DULU</button>
+            </div>
+                  </div>
+      </div>
+    </div>
+  </div>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Arima+Madurai&family=Bellota&family=Big+Shoulders+Text&family=Cookie&family=Grand+Hotel&family=Oleo+Script+Swash+Caps&family=Pacifico&family=Parisienne&family=Playfair+Display:wght@500&family=Poppins&family=Sacramento&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Fondamento&family=Great+Vibes&family=Lobster+Two&family=Montserrat:wght@100&family=Playfair+Display&family=Rouge+Script&family=Satisfy&family=Sofia&display=swap');
+
+    .wrapper {
+        overflow: hidden;
+    }
+
+    .wrapper .main-container-page-1 {
+        background-image: url('https://jasaundangan.com/assets/images/design/1657877044821925368940.jpg');
+    }
+
+    .wrapper .main-container-page-1 .bg-sampul {
+        background: rgba(0, 0, 0, 0.544);
+    }
+
+    .wrapper .main-container-page-1 .content-wrapper .button {
+        background: #45818e;
+    }
+
+    .wrapper .main-container-page-1 .content-wrapper .text-home {
+        color: white;
+    }
+
+    .wrapper .tabbar .item {
+        color: black;
+    }
+
+    .wrapper #buttonIconVolumeMusic {
+        background: #1a4802;
+    }
+
+    .wrapper .main-container-page-2 {
+        background-image: url('https://jasaundangan.com/assets/images/design/1657877165251507031501.jpg');
+    }
+
+    .wrapper .main-container-page-2 .bg-sampul {
+        background: rgba(243, 246, 244, 0.539);
+    }
+
+    .wrapper .main-container-page-2 .content-wrapper p {
+        color: #1a4802;
+    }
+
+    .wrapper .main-container-page-2 .content-wrapper .mempelai .nama-mempelai {
+        color: #1a4802;
+    }
+
+    .wrapper .main-container-page-3 {
+        background-image: url('https://jasaundangan.com/assets/images/design/1657877165251507031501.jpg');
+    }
+
+    .wrapper .main-container-page-3 .bg-sampul {
+        background: rgba(243, 246, 244, 0.539);
+    }
+
+    .wrapper .main-container-page-3 .content-wrapper .namamempelai {
+        color: #1a4802;
+        text-align: center;
+    }
+
+    .wrapper .main-container-page-3 .content-wrapper .namaorangtua {
+        text-align: center;
+    }
+
+    .wrapper .main-container-page-3 .content-wrapper .salam {
+        color: #444444;
+    }
+
+    @media screen and (max-height: 750px) {
+        .wrapper .main-container-page-3 .content-wrapper {
+            padding-top: 200px;
+            padding-bottom: 100px;
+        }
+    }
+
+    .wrapper .main-container-page-4 {
+        background-image: url('https://jasaundangan.com/assets/images/design/1657877165251507031501.jpg');
+    }
+
+    .wrapper .main-container-page-4 .content-wrapper .heading,
+    .wrapper .main-container-page-4 .content-wrapper .content-item .title {
+        color: #1a4802;
+    }
+
+    .wrapper .main-container-page-4 .content-wrapper .countdown #wrapperCountdown span {
+        background-color: #1a4802;
+    }
+
+    .wrapper .main-container-page-4 .bg-sampul {
+        background: rgba(243, 246, 244, 0.539);
+    }
+
+    .wrapper .main-container-page-5 {
+        background-image: url('https://jasaundangan.com/assets/images/design/1657877165251507031501.jpg');
+    }
+
+    .wrapper .main-container-page-5 .content-wrapper .content-item .title {
+        color: #1a4802;
+    }
+
+    .wrapper .main-container-page-5 .content-wrapper .content-item .button-open-maps {
+        background-color: #1a4802;
+    }
+
+    .wrapper .main-container-page-5 .bg-sampul {
+        background: rgba(243, 246, 244, 0.539);
+    }
+
+    .wrapper .main-container-page-6 {
+        background-image: url('https://jasaundangan.com/assets/images/design/1657877165251507031501.jpg');
+    }
+
+    .wrapper .main-container-page-6 .content-wrapper .content-item .title {
+        color: #1a4802;
+    }
+
+    .wrapper .main-container-page-6 .content-wrapper .content-item .button-send-message {
+        background: #1a4802;
+    }
+
+    .wrapper .main-container-page-6 .content-wrapper .content-item .message-item .badge {
+        background: #1a4802;
+        color: white;
+    }
+
+    .wrapper .main-container-page-6 .content-wrapper .content-item .message-item i {
+        color: #555;
+    }
+
+    .wrapper .main-container-page-6 .bg-sampul {
+        background: rgba(243, 246, 244, 0.539);
+    }
+
+    .wrapper .main-container-page-6 .content-wrapper {
+        padding-top: 100px;
+    }
+
+    .wrapper .main-container-page-7 {
+        background-image: url('https://jasaundangan.com/assets/images/design/1657877165251507031501.jpg');
+    }
+
+    .wrapper .main-container-page-7 .content-wrapper .content-item .title {
+        color: #1a4802;
+    }
+
+    .wrapper .main-container-page-7 .content-wrapper .content-item .nama-mempelai {
+        color: #1a4802;
+    }
+
+    .wrapper .main-container-page-7 .content-wrapper .content-item .button-send-gift {
+        background: #1a4802;
+    }
+
+    .wrapper .main-container-page-7 .content-wrapper .content-item .design-by .design-by {
+        color: #1a4802;
+    }
+
+    .wrapper .main-container-page-7 .bg-sampul {
+        background: rgba(243, 246, 244, 0.539);
+    }
+
+    .wrapper .main-container-page-8 {
+        background-image: url('https://jasaundangan.com/assets/images/design/1657877165251507031501.jpg');
+    }
+
+    .wrapper .main-container-page-8 .content-wrapper .content-item .title {
+        color: #1a4802;
+    }
+
+    .wrapper .main-container-page-8 .content-wrapper .content-item .live-wrapper .live-item .btn-open-live {
+        background: #1a4802;
+    }
+
+    .wrapper .main-container-page-8 .bg-sampul {
+        background: rgba(243, 246, 244, 0.539);
+    }
+
+    .wrapper .main-container-page-9 {
+        background-image: url('https://jasaundangan.com/assets/images/design/1657877165251507031501.jpg');
+    }
+
+    .wrapper .main-container-page-9 .content-wrapper .content-item .title {
+        color: #1a4802;
+    }
+
+    .wrapper .main-container-page-9 .content-wrapper .content-item .timeline-wrapper .timeline-vertical-line {
+        background-color: #1a4802;
+    }
+
+    .wrapper .main-container-page-9 .content-wrapper .content-item .timeline-wrapper .timeline-item .timeline-date {
+        border: 2px solid #1a4802;
+        border-radius: 50px;
+        color: #1a4802;
+    }
+
+    .wrapper .main-container-page-9 .content-wrapper .content-item .timeline-wrapper .timeline-item .title {
+        color: #1a4802;
+    }
+
+    .wrapper .main-container-page-9 .bg-sampul {
+        background: rgba(243, 246, 244, 0.539);
+    }
+
+    .wrapper .main-container-page-10 {
+        background-image: url('https://jasaundangan.com/assets/images/design/1657877165251507031501.jpg');
+    }
+
+    .wrapper .main-container-page-10 .content-wrapper .content-item .title {
+        color: #1a4802;
+    }
+
+    .wrapper .main-container-page-10 .bg-sampul {
+        background: rgba(243, 246, 244, 0.539);
+    }
+
+    .custom-font-family {
+        font-family: Arima Madurai !important;
+    }
+
+    .custom-warna-font {
+        color: #444444 !important;
+    }
+
+    .custom-font-size-1 {
+        font-size: 15px !important;
+    }
+
+    .custom-font-size-2 {
+        font-size: 25px !important;
+    }
+
+    .custom-font-size-3 {
+        font-size: 13px !important;
+    }
+
+    .custom-font-size-4 {
+        font-size: 17px !important;
+    }
+
+    .custom-font-size-5 {
+        font-size: 12px !important;
+    }
+
+    #lightbox {
+        top: 50% !important;
+        transform: translate(0, -50%) !important;
+    }
+
+    @keyframes frame-top-left {
+        0% { left: 0; top: 0; transform: scale(1) rotate(0deg); }
+        49% { left: -10px; top: -10px; transform: scale(0.9) rotate(-5deg); }
+        51% { left: -10px; top: -10px; transform: scale(0.9) rotate(-5deg); }
+        98% { left: 0; top: 0; transform: scale(1) rotate(0deg); }
+    }
+
+    .frame-animation-top-left {
+        animation: frame-top-left 4s infinite linear;
+    }
+
+    @keyframes frame-top-right {
+        0% { right: 0; top: 0; transform: scale(1) rotate(0deg); }
+        49% { right: -10px; top: -10px; transform: scale(0.9) rotate(5deg); }
+        51% { right: -10px; top: -10px; transform: scale(0.9) rotate(5deg); }
+        98% { right: 0; top: 0; transform: scale(1) rotate(0deg); }
+    }
+
+    .frame-animation-top-right {
+        animation: frame-top-right 4s infinite linear;
+    }
+
+    @keyframes frame-bottom-left {
+        0% { left: 0; bottom: 65px; transform: scale(1) rotate(0deg); }
+        49% { left: -10px; bottom: 55px; transform: scale(0.9) rotate(-5deg); }
+        51% { left: -10px; bottom: 55px; transform: scale(0.9) rotate(-5deg); }
+        98% { left: 0; bottom: 65px; transform: scale(1) rotate(0deg); }
+    }
+
+    .frame-animation-bottom-left {
+        animation: frame-bottom-left 4s infinite linear;
+    }
+
+    @keyframes frame-bottom-right {
+        0% { right: 0; bottom: 65px; transform: scale(1) rotate(0deg); }
+        49% { right: -10px; bottom: 55px; transform: scale(0.9) rotate(5deg); }
+        51% { right: -10px; bottom: 55px; transform: scale(0.9) rotate(5deg); }
+        98% { right: 0; bottom: 65px; transform: scale(1) rotate(0deg); }
+    }
+
+    .frame-animation-bottom-right {
+        animation: frame-bottom-right 4s infinite linear;
+    }
+</style>
+
+<div class="wrapper">
+    <div class="main-container main-container-page-1">
+        <di class="content-wrapper">
+            <p class="wow fadeInDownBig text-home custom-font-size-1" data-wow-delay="0.2s">Wedding Invitation</p>
+            <div class="mempelai wow fadeInDownBig">
+                <h4 class="mempelai text-home nama-mempelai mb-0 custom-font-family custom-font-size-2">Rio Purnama</h4>
+                <strong class="custom-font-family text-home custom-font-size-2">&</strong>
+                <h4 class="mempelai text-home nama-mempelai mt-0 custom-font-family custom-font-size-2">Sarah Sekarwangi</h4>
+            </div>
+            <img src="https://jasaundangan.com/assets/images/design/165785461222286115179.png" class="header-img wow fadeIn" alt="header" data-wow-delay="0.6s">
+            <p class="mb-0 text-home wow fadeInUpBig custom-font-size-3">Kepada Yth.</p>
+            <p class="mb-0 text-home wow fadeInUpBig custom-font-size-3" data-wow-delay="0.1s">Bapak/Ibu/Saudara/i</p>
+            <strong class="undangan text-home wow fadeInUpBig custom-font-size-4" data-wow-delay="0.2s">Tamu Undangan</strong>
+                            <button onclick="togglePlayMusic('https://jasaundangan.com/assets/music/1657853993918.mp3')" class="button wow fadeInUpBig custom-font-size-5" data-wow-delay="0.3s" id="buttonBukaUndangan"><i class="fa mr-1 fa-envelope-open"></i> Buka Undangan</button>
+                    </di>
+        <div class="bg-sampul"></div>
+    </div>
+    <div class="main-container main-container-page-2">
+        <di class="content-wrapper">
+            <p class="title custom-font-family wow fadeInDown">The Wedding</p>
+            <div class="mempelai wow zoomIn" data-wow-delay="0.2s">
+                <h4 class="nama-mempelai mb-0 custom-font-family">Rio</h4>
+                <p class="and mb-0 custom-font-family">&</p>
+                <h4 class="nama-mempelai mb-0 custom-font-family">Sarah</h4>
+            </div>
+            <img src="https://jasaundangan.com/assets/images/design/1657853869311421751901.png" class="image wow fadeIn" data-wow-delay="0.1s" alt="header">
+            <p class="tanggal custom-warna-font wow fadeInUp">16 September 2022</p>
+        </di>
+        <div class="bg-sampul"></div>
+    </div>
+    <div class="main-container main-container-page-3">
+        <di class="content-wrapper">
+            <img class="bismillah wow fadeInDown" data-wow-delay="0.2s" src="https://jasaundangan.com/assets/images/design/bismillah.png" alt="icon header">
+            <p class="salam custom-warna-font mb-0 wow fadeInDown" data-wow-delay="0.1s">Assalamu'alaikum warrahmatullahi wabarakatuh</p>
+            <p class="info-undangan custom-warna-font mb-0 wow fadeInDown">Dengan memohon Rahmat Allah SWT.<br />Kami akan menyelenggarakan pernikahan kami:</p>
+            <div class="fotomempelai fotomempelai1 wow fadeInLeft" data-wow-delay="0.3s">
+                <img src="https://jasaundangan.com/assets/images/design/defaultfotopria.jpg" alt="foto pria">
+            </div>
+            <small class="instagram custom-warna-font instagram1 wow fadeInLeft" data-wow-delay="0.4s">
+                <i class="fab fa-instagram"></i> <span class="ml-1">riopurnama.id</span>
+            </small>
+            <p class="namamempelai namamempelai1 mb-0 custom-font-family wow fadeInLeft" data-wow-delay="0.5s">Rio Purnama</p>
+            <p class="namaorangtua custom-warna-font namaorangtua1 mb-0 wow fadeInLeft" data-wow-delay="0.6s">Putra Bapak Sadih dan Ibu Yani suwarnih</p>
+            <div class="fotomempelai fotomempelai2 wow fadeInRight" data-wow-delay="0.7s">
+                <img src="https://jasaundangan.com/assets/images/design/defaultfotowanita.jpg" alt="foto wanita">
+            </div>
+            <small class="instagram custom-warna-font instagram2 wow fadeInRight" data-wow-delay="0.8s">
+                <i class="fab fa-instagram"></i> <span class="ml-1">sarah_sekarwangi</span>
+            </small>
+            <p class="namamempelai namamempelai2 mb-0 custom-font-family wow fadeInRight" data-wow-delay="0.9s">Sarah Sekarwangi</p>
+            <p class="namaorangtua custom-warna-font namaorangtua2 mb-0 wow fadeInRight" data-wow-delay="1s">Putri Bapak Ahmad dan Ibu Siti maryam</p>
+        </di>
+        <div class="bg-sampul"></div>
+    </div>
+    <div class="main-container main-container-page-4">
+        <div class="content-wrapper">
+            <p class="heading custom-font-family wow fadeInDown">Akan diselenggarakan pada :</p>
+            <div class="content-item">
+                <p class="title wow fadeInLeft" data-wow-delay="0.1s">- AKAD NIKAH -</p>
+                <span class="info custom-warna-font wow fadeInLeft" data-wow-delay="0.2s">Sabtu, 15 Desember 2022</span>
+                <span class="info custom-warna-font wow fadeInLeft" data-wow-delay="0.3s">Pukul 08:00 WIB</span>
+                <span class="info custom-warna-font wow fadeInLeft" data-wow-delay="0.4s">Masjid Istiqlal Jakarta</span>
+            </div>
+            <div class="content-item">
+                <p class="title wow fadeInRight" data-wow-delay="0.5s">- RESEPSI -</p>
+                <span class="info custom-warna-font wow fadeInRight" data-wow-delay="0.6s">Ahad, 16 Desember 2022</span>
+                <span class="info custom-warna-font wow fadeInRight" data-wow-delay="0.7s">Pukul 09:00 - 21.00 WIB</span>
+                <span class="info custom-warna-font wow fadeInRight" data-wow-delay="0.8s">Kediaman Mempelai Wanita</span>
+            </div>
+            <div class="countdown wow fadeInUpBig" data-wow-delay="0.9s">
+                <p class="heading custom-font-family">Hitung acara mundur :</p>
+                <div id="wrapperCountdown"></div>
+            </div>
+        </div>
+        <div class="bg-sampul"></div>
+    </div>
+    <div class="main-container main-container-page-5">
+        <div class="content-wrapper">
+            <div class="content-item">
+                <p class="title custom-font-family wow fadeInDown">Peta Lokasi Acara :</p>
+                <div class="wow fadeIn" data-wow-delay="0.3s">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.7055307599117!2d106.82920131471644!3d-6.170169995532881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5ce68b5e01d%3A0xcafaf042d5840c6c!2sIstiqlal%20Mosque!5e0!3m2!1sen!2sid!4v1657847392653!5m2!1sen!2sid" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <span class="info custom-warna-font wow fadeInUp">Jl. Taman Wijaya Kusuma, Pasar Baru, Kec. Sawah Besar, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10710</span>
+                <a href="https://goo.gl/maps/ty5GwVDiGcP5JU3T9" target="_blank" class="button-open-maps wow fadeInUp" data-wow-delay="0.1s"><i class="fa mr-1 fa-map-marker-alt"></i> Buka Maps</a>
+            </div>
+        </div>
+        <div class="bg-sampul"></div>
+    </div>
+    <div class="main-container main-container-page-6">
+        <div class="content-wrapper">
+            <div class="content-item">
+                <p class="title custom-font-family wow fadeInDown" data-wow-delay="0.6s">Kirim Ucapan</p>
+                <div class="form">
+                    <div class="form-group wow fadeInDown" data-wow-delay="0.5s">
+                        <input type="text" class="form-control" id="ucapanName" placeholder="Nama">
+                    </div>
+                    <div class="form-group wow fadeInDown" data-wow-delay="0.4s">
+                        <input type="number" class="form-control" id="ucapanWhatsapp" placeholder="No Whatsapp">
+                    </div>
+                    <div class="form-group wow fadeInDown" data-wow-delay="0.3s">
+                        <select class="form-control" id="ucapanConfirmation">
+                            <option value="" selected disabled>Konfirmasi Kehadiran</option>
+                            <option value="1">Hadir</option>
+                            <option value="2">Tidak Hadir</option>
+                            <option value="3">Belum Tau</option>
+                        </select>
+                    </div>
+                    <div class="form-group wow fadeInDown" data-wow-delay="0.1s">
+                        <textarea placeholder="Ucapan" id="ucapanMessage" rows="3" class="form-control"></textarea>
+                    </div>
+                    <button class="button-send-message wow fadeInDown"><i class="fa mr-1 fa-paper-plane"></i> Kirim</button>
+                </div>
+                <div class="message-list wow fadeInUp" data-wow-delay="0.8s">
+                    <div class="message-item">
+                        <strong class="name">Asep <span class="badge">Hadir</span></strong>
+                        <i class="message">Selamat ya ka rio, semoga Bahagia</i>
+                    </div>
+                    <div class="message-item">
+                        <strong class="name">Siti <span class="badge">Belum Tau</span></strong>
+                        <i class="message">Masya Allah, semoga Sakinah, mawadah, warohmah</i>
+                    </div>
+                    <div class="message-item">
+                        <strong class="name">Bagus <span class="badge">Tidak Hadir</span></strong>
+                        <i class="message">Selamat ya semoga bahagia</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-sampul"></div>
+    </div>
+    <div class="main-container main-container-page-7">
+        <div class="content-wrapper">
+            <div class="content-item">
+                <p class="title custom-font-family wow fadeInDown">Penutup</p>
+                <span class="info custom-warna-font wow fadeInUp">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila bapak/Ibu/Saudara/i berkenan hadir untuk memberikan do'a restu kepada kami</span>
+                <span class="salam custom-warna-font wow fadeInUp" data-wow-delay="0.3s">Wassalamu'alaikum warahmatullahi wabarakatuh</span>
+                <h4 class="nama-mempelai custom-font-family wow fadeInUp mb-0">~ Rio & Sarah ~</h4><br>
+                <span class="info custom-warna-font wow fadeInUp" data-wow-delay="0.4s">Doa dari kamu merupakan hal yang sangat bermakna bagi kami. Namun jika mau memberikan hadiah klik tombol dibawah ini</span>
+                <button class="button-send-gift wow fadeInUp" data-wow-delay="0.5s" data-toggle="modal" data-target="#sendGiftModal"><i class="fa mr-1 fa-gift"></i> Kirim Hadiah</button>
+                <small class="design-by wow fadeInUp" data-wow-delay="0.6s"><span class="design-by custom-warna-font">Design by</span> <a href="https://t-faces.github.io/">T-faces</a></small>
+            </div>
+        </div>
+        <div class="bg-sampul"></div>
+    </div>
+    <div class="main-container main-container-page-8">
+        <div class="content-wrapper">
+            <div class="content-item">
+                <p class="title custom-font-family wow fadeInDown">Live</p>
+                <span class="custom-warna-font wow fadeInUp">Saksikan acara pernikahan kami<br /> secara virtual</span>
+                <div class="live-wrapper">
+                    <div class="live-item">
+                        <img src="https://jasaundangan.com/assets/images/icon/instagram.png" alt="icon instagram" class="icon wow fadeInUp">
+                        <button class="btn-open-live wow fadeInUp" data-wow-delay="0.2s">Buka Akun</button>
+                    </div>
+                    <div class="live-item">
+                        <img src="https://jasaundangan.com/assets/images/icon/youtube.png" alt="icon youtube" class="icon wow fadeInUp" data-wow-delay="0.4s">
+                        <button class="btn-open-live wow fadeInUp" data-wow-delay="0.6s">Buka Akun</button>
+                    </div>
+                    <div class="live-item">
+                        <img src="https://jasaundangan.com/assets/images/icon/zoom.png" alt="icon zoom" class="icon wow fadeInUp" data-wow-delay="0.8s">
+                        <button class="btn-open-live wow fadeInUp" data-wow-delay="1s">Buka Akun</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-sampul"></div>
+    </div>
+    <div class="main-container main-container-page-9">
+        <div class="content-wrapper">
+            <div class="content-item">
+                <p class="title custom-font-family wow fadeInDown">Kisah</p>
+                <div class="timeline-wrapper">
+                    <div class="timeline-vertical-line"></div>
+                    <div class="timeline-item">
+                        <span data-wow-delay="0s" class="timeline-date wow fadeIn">20 Januari 2020</span>
+                        <div class="timeline-content d-flex">
+                            <div data-wow-delay="0s" class="flex-1 flex-content wow fadeInLeft">
+                                <p class="mb-0 title">Awal Bertemu</p>
+                                <p class="content mb-2">Kami bertemu di Masjid Istiqlal Jakarta pada sebuah pengajian rutin.</p>
+                            </div>
+                            <div class="flex-1"></div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <span data-wow-delay="0.2s" class="timeline-date wow fadeIn">9 Februari 2020</span>
+                        <div class="timeline-content d-flex">
+                            <div class="flex-1"></div>
+                            <div data-wow-delay="0.2s" class="flex-1 flex-content wow fadeInRight">
+                                <p class="mb-0 title">Taaruf</p>
+                                <p class="content mb-2">Kami bersepakat melakukan taaruf tanpa berpacaran terlebih dahulu.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <span data-wow-delay="0.4s" class="timeline-date wow fadeIn">30 Maret 2020</span>
+                        <div class="timeline-content d-flex">
+                            <div data-wow-delay="0.4s" class="flex-1 flex-content wow fadeInLeft">
+                                <p class="mb-0 title">Khitbah</p>
+                                <p class="content mb-2">Kami berkhitbah untuk melanjutkan ke jenjang yang lebih serius.</p>
+                            </div>
+                            <div class="flex-1"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-sampul"></div>
+    </div>
+    <div class="main-container main-container-page-10">
+        <div class="content-wrapper">
+            <div class="content-item">
+                <p class="title custom-font-family wow fadeInDown">Album</p>
+                <div class="galleries-wrapper">
+                    <a data-lightbox="roadtrip" href="https://jasaundangan.com/assets/images/mempelai/galeri1.jpg" data-lightbox="image 1">
+                        <img data-wow-delay="0s" src="https://jasaundangan.com/assets/images/mempelai/galeri1.jpg" alt="galeri" class="gallery-item wow fadeInUp">
+                    </a>
+                    <a data-lightbox="roadtrip" href="https://jasaundangan.com/assets/images/mempelai/galeri2.jpg" data-lightbox="image 2">
+                        <img data-wow-delay="0.2s" src="https://jasaundangan.com/assets/images/mempelai/galeri2.jpg" alt="galeri" class="gallery-item wow fadeInUp">
+                    </a>
+                    <a data-lightbox="roadtrip" href="https://jasaundangan.com/assets/images/mempelai/galeri3.jpg" data-lightbox="image 3">
+                        <img data-wow-delay="0.4s" src="https://jasaundangan.com/assets/images/mempelai/galeri3.jpg" alt="galeri" class="gallery-item wow fadeInUp">
+                    </a>
+                    <a data-lightbox="roadtrip" href="https://jasaundangan.com/assets/images/mempelai/galeri4.jpg" data-lightbox="image 4">
+                        <img data-wow-delay="0.6s" src="https://jasaundangan.com/assets/images/mempelai/galeri4.jpg" alt="galeri" class="gallery-item wow fadeInUp">
+                    </a>
+                    <a data-lightbox="roadtrip" href="https://jasaundangan.com/assets/images/mempelai/galeri5.jpg" data-lightbox="image 5">
+                        <img data-wow-delay="0.8s" src="https://jasaundangan.com/assets/images/mempelai/galeri5.jpg" alt="galeri" class="gallery-item wow fadeInUp">
+                    </a>
+                    <a data-lightbox="roadtrip" href="https://jasaundangan.com/assets/images/mempelai/galeri6.jpg" data-lightbox="image 6">
+                        <img data-wow-delay="1s" src="https://jasaundangan.com/assets/images/mempelai/galeri6.jpg" alt="galeri" class="gallery-item wow fadeInUp">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="bg-sampul"></div>
+    </div>
+                <img src="https://jasaundangan.com/assets/images/design/1657877044821925368940.png" alt="frame kanan atas" class="frame-preview wow fadeInRight" id="previewFrameRightTop">
+                <img src="https://jasaundangan.com/assets/images/design/1657877165251507031501.png" alt="frame kiri bottom" class="frame-preview wow fadeInLeft" id="previewFrameLeftBottom">
+                    <i onclick="togglePlayMusic()" id="buttonIconVolumeMusic" class="fa fa-volume-down"></i>
+        <div class="tabbar">
+        <div class="tabbar-main">
+            <div class="item  item-page-2 item-active" onclick="changePage(2)">
+                <i class="fa fa-home"></i>
+                <span>Sampul</span>
+            </div>
+            <div class="item item-page-3" onclick="changePage(3)">
+                <i class="fa fa-heart"></i>
+                <span>Mempelai</span>
+            </div>
+            <div class="item item-page-4" onclick="changePage(4)">
+                <i class="fa fa-calendar-alt"></i>
+                <span>Acara</span>
+            </div>
+            <div class="item item-page-5" onclick="changePage(5)">
+                <i class="fa fa-map-marker-alt"></i>
+                <span>Lokasi</span>
+            </div>
+            <div class="item item-page-8" onclick="changePage(8)">
+                <i class="fa fa-video"></i>
+                <span>Siaran</span>
+            </div>
+            <div class="item item-page-9" onclick="changePage(9)">
+                <i class="fa fa-book-open"></i>
+                <span>Cerita</span>
+            </div>
+            <div class="item item-page-10" onclick="changePage(10)">
+                <i class="fa fa-image"></i>
+                <span>Album</span>
+            </div>
+            <div class="item item-page-6" onclick="changePage(6)">
+                <i class="fa fa-comment-alt"></i>
+                <span>Ucapan</span>
+            </div>
+            <div class="item item-page-7" onclick="changePage(7)">
+                <i class="fa fa-gift"></i>
+                <span>Hadiah</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="sendGiftModal" tabindex="-1" aria-labelledby="sendGiftModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <strong><i class="fa mr-1 fa-gift"></i> Kirim Hadiah</strong>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input style="position: absolute; left: -1000%;" type="text" value="0987654321" id="valueRekening">
+                <div class="modal-item">
+                    <img class="bank-logo" src="https://jasaundangan.com/assets/images/payment/bca.png" alt="logo bca">
+                    <span class="bank-an">a.n Rio Purnama</span>
+                    <strong class="bank-number">0987654321</strong>
+                    <button onclick="copyFunction('valueRekening')" class="btn btn-sm px-3 btn-outline-secondary"><i class="far fa-copy"></i> Copy</button>
+                </div>
+                <input style="position: absolute; left: -1000%;" type="text" value="Jl. Raya Pntamburan Blok A No.21 Kel. Cimanggis Kec. Gambir Jakarta Barat" id="valueAlamatLengkapHadiah">
+                <div class="modal-item">
+                    <img class="gift-logo" src="https://jasaundangan.com/assets/images/icon/gift-icon.png" alt="gift">
+                    <span class="bank-an">Rio Purnama</span>
+                    <span class="address">Jl. Raya Pntamburan Blok A No.21 Kel. Cimanggis Kec. Gambir Jakarta Barat</span>
+                    <button onclick="copyFunction('valueAlamatLengkapHadiah')" class="btn btn-sm px-3 btn-outline-secondary"><i class="far fa-copy"></i> Copy</button>
+                </div>
+                <a href="#" class="btn btn-success px-5 mx-auto"><i class="fab fa-whatsapp"></i> Konfirmasi</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://jasaundangan.com/assets/js/jquery.countdown.min.js"></script>
+
+    <script>
+        const globalAudioURL = "https://jasaundangan.com/assets/music/1657853993918.mp3";
+        const musicAudio = new Audio(globalAudioURL);
+        let audioIsPlaying = false;
+        musicAudio.loop = true;
+
+        function togglePlayMusic() {
+            if (audioIsPlaying) {
+                $("#buttonIconVolumeMusic").addClass("fa-volume-down");
+                $("#buttonIconVolumeMusic").removeClass("fa-volume-up");
+                audioIsPlaying = false;
+                musicAudio.pause();
+            } else {
+                $("#buttonIconVolumeMusic").addClass("fa-volume-up");
+                $("#buttonIconVolumeMusic").removeClass("fa-volume-down");
+                audioIsPlaying = true;
+                musicAudio.play();
+            }
+        }
+    </script>
+
+<script>
+    $("iframe").attr("width", "100%");
+    $("iframe").attr("height", "250px");
+
+    function requestFullScreen() {
+        const elm = document.documentElement;
+        if (elm.requestFullscreen) {
+            elm.requestFullscreen();
+        } else if (elm.mozRequestFullScreen) {
+            elm.mozRequestFullScreen();
+        } else if (elm.webkitRequestFullScreen) {
+            elm.webkitRequestFullScreen();
+        }
+    }
+
+    $("#buttonBukaUndangan").on("click", function() {
+        requestFullScreen();
+        $(".wrapper .main-container-page-1").hide();
+        $(".wrapper .tabbar").css('display', 'flex');
+        $(".wrapper #buttonIconVolumeMusic").show();
+        $(".wrapper .main-container-page-2").css('display', 'flex');
+    });
+
+    $(".button-send-message").on('click', function() {
+        const name = $("#ucapanName").val();
+        const whatsapp = $("#ucapanWhatsapp").val();
+        const confirmation = $("#ucapanConfirmation").val();
+        const message = $("#ucapanMessage").val();
+
+        if (name === '' || whatsapp === '' || !confirmation || message === '') {
+            swal({
+                text: 'Semua kolom harus diisi.',
+                icon: 'warning',
+            });
+        } else {
+            swal({
+                text: 'Ucapan berhasil dikirim.',
+                icon: 'success',
+            });
+            $("#ucapanName").val('');
+            $("#ucapanWhatsapp").val('');
+            $("#ucapanConfirmation").val('');
+            $("#ucapanMessage").val('');
+        }
+    });
+
+    let currentPage = 1;
+    let goChangePage = false;
+    function changePage(id) {
+        currentPage = parseInt(id);
+        $(".wrapper .main-container").hide();
+        $(`.wrapper .main-container-page-${id}`).show();
+        $(".wrapper .tabbar .item").css('opacity', 0.5);
+        $(`.wrapper .tabbar .item-page-${id}`).css('opacity', 1);
+
+        if (id === 2) {
+            $(".wrapper .frame-preview").hide();
+        } else {
+            $(".wrapper .frame-preview").show();
+        }
+
+        let leftValue = 0;
+        switch (id) {
+            case 4:
+                leftValue = 50;
+                break;
+            case 5:
+                leftValue = 130;
+                break;
+            case 8:
+                leftValue = 210;
+                break;
+            case 9:
+                leftValue = 290;
+                break;
+            case 10:
+                leftValue = 370;
+                break;
+            case 6:
+                leftValue = 450;
+                break;
+            case 7:
+                leftValue = 530;
+                break;
+        }
+        $(".wrapper .tabbar").animate({
+                scrollLeft: leftValue
+            },
+            500
+        );
+        if (goChangePage) {
+            setTimeout(() => {
+                goChangePage = false;
+            }, 500);
+        }
+    }
+
+    const getFullYear = new Date().getFullYear();
+
+    $("#wrapperCountdown").countdown({
+        date: `${getFullYear}-12-15T09:00:00`,
+        render: function(data) {
+            var el = $(this.el);
+            el.empty()
+                .append(
+                    "<span>" + this.leadingZeros(data.days, 2) + "<small>Hari</small></span>"
+                )
+                .append(
+                    "<span>" + this.leadingZeros(data.hours, 2) + "<small>Jam</small></span>"
+                )
+                .append(
+                    "<span>" + this.leadingZeros(data.min, 2) + "<small>Menit</small></span>"
+                )
+                .append(
+                    "<span>" + this.leadingZeros(data.sec, 2) + "<small>Detik</small></span>"
+                )
+        },
+    });
+</script><script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://jasaundangan.com/assets/js/wow.js"></script>
+<script src="https://jasaundangan.com/assets/js/lightbox.js"></script>
+<script>
+    //loading screen
+    $(window).ready(function() {
+        $(".loading-animation-screen").fadeOut("slow");
+    })
+
+    $("i.icon-search-navbar").on('click', function() {
+        $("div.search-form").slideDown('fast');
+        $("div.search-form input").focus();
+    })
+
+    $("div.search-form i").on('click', function() {
+        $("div.search-form").slideUp('fast');
+    })
+
+    lightbox.option({
+        'disableScrolling': true,
+        alwaysShowNavOnTouchDevices: true,
+        albumLabel: 'Foto %1 dari %2'
+    })
+
+    new WOW().init();
+
+    function copyFunction(inputId) {
+        var copyText = document.getElementById(inputId);
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        swal({
+            text: "Berhasil di copy",
+            icon: "success",
+        });
+    }
+</script>
+</body>
+
+</html>
