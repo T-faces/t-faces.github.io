@@ -945,20 +945,24 @@ function createRepositoryCard(
             .join("");
 
 
-    const homepageButton =
-        repo.homepage
-            ? `
-                <a
-                    class="project-link"
-                    href="${escapeAttribute(repo.homepage)}"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    <i class="fa-solid fa-globe"></i>
-                    Demo
-                </a>
-            `
-            : "";
+   const demoURL =
+    getDemoURL(repo);
+
+
+const homepageButton =
+    demoURL
+        ? `
+            <a
+                class="project-link"
+                href="${escapeAttribute(demoURL)}"
+                target="_blank"
+                rel="noopener"
+            >
+                <i class="fa-solid fa-globe"></i>
+                Live Demo
+            </a>
+        `
+        : "";
 
 
     return `
@@ -1073,6 +1077,54 @@ function createRepositoryCard(
         </article>
 
     `;
+
+}
+
+/* =========================================================
+   DETEKSI URL DEMO
+========================================================= */
+
+function getDemoURL(repo) {
+
+    // Homepage yang diberikan GitHub
+    if (
+        repo.homepage &&
+        repo.homepage.trim() !== ""
+    ) {
+
+        return repo.homepage.trim();
+
+    }
+
+
+    // GitHub Pages utama
+    if (
+        repo.name.toLowerCase() ===
+        `${GITHUB_USERNAME.toLowerCase()}.github.io`
+    ) {
+
+        return `
+            https://${GITHUB_USERNAME}.github.io/
+        `;
+
+    }
+
+
+    // Repository *.github.io
+    if (
+        repo.name
+            .toLowerCase()
+            .endsWith(".github.io")
+    ) {
+
+        return `
+            https://${repo.name}/
+        `;
+
+    }
+
+
+    return null;
 
 }
 
